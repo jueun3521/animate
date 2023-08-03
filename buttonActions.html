@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Actions</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <input type="button" value="append" class="append" />
+        <input type="button" value="remove" class="remove" />
+        <input type="button" value="show" class="show" />
+        <input type="button" value="hide" class="hide" />
+        <input type="button" value="toggle" class="toggle" />
+        <input type="button" value="fadein" class="fadein" />
+        <input type="button" value="fadeout" class="fadeout" />
+        <input type="button" value="fadetoggle" class="fadetoggle" />
+        <input type="button" value="addclass" class="addclass" />
+        <input type="button" value="removeclass" class="removeclass" />
+        <input type="button" value="toggleclass" class="toggleclass" />
+        <input type="button" value="slideup" class="slideup" />
+        <input type="button" value="slidedown" class="slidedown" />
+        <input type="button" value="slidetoggle" class="slidetoggle" />
+    </div>
+    <div class="content"></div>
+    <script>
+        $(function(){
+            // 화살표 함수 .click(() => {})
+            // append
+            $(".append").click(() => {
+                $(".content").append(`<div class="box"></div>`)
+                $(".box").last().css("background-color", makeColor())
+            })
+            function makeColor(){
+                const randomColor = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+                return randomColor;
+            }
+            // remove
+            // append로 만든 요소를 삭제
+            $(".remove").click(() => {
+                $(".box").remove();
+            })
+            // show
+            // append로 만든 요소를 보이게
+            $(".show").click(() => {
+                $(".box").show();
+            })
+            // hide
+            // append로 만든 요소를 숨김
+            $(".hide").click(() => {
+                $(".box").hide();
+            })
+            // toggle
+            // append로 만든 요소를 보이고/숨김
+            $(".toggle").click(() => {
+                $(".box").toggle();
+            })
+            // fadein
+            // append로 만든 요소를 자연스럽게 보이게
+            // 오파시티 트렌지션과 비슷
+            $(".fadein").click(() => {
+                $(".box").fadeIn(2000);
+            })
+            // fadeout
+            // append로 만든 요소를 자연스럽게 안 보이게
+            $(".fadeout").click(() => {
+                $(".box").fadeOut(2000);
+            })
+            // fadetoggle
+            // append로 만든 요소를 자연스럽게 보이게/안 보이게
+            $(".fadetoggle").click(() => {
+                $(".box").fadeToggle(2000);
+            })
+            // addclass
+            // 빈공간에 .red 클래스에 css값을 주어 빨강색 넣기
+            $(".addclass").click(() => {
+                $(".box").addClass("red")
+            })
+            // removeclass
+            // 빈공간에 .red 클래스에 css값을 주어 넣은 빨강색 빼기 
+            $(".removeclass").click(() => {
+                $(".box").removeClass("red")
+            })
+            slideup
+            // 슬라이드해서 위로 올라감
+            $(".slideup").click(() => {
+                $(".box").slideUp()
+            })
+            // slideup
+            // 슬라이드해서 위로 올라감
+            // $(".slideup").click(() => {
+                // $(".box:odd").slideUp() -> 짝수만
+                // $(".box:even").slideUp() -> 홀수만
+            })
+            // slidedown
+            // 슬라이드해서 밑으로 내려옴
+            $(".slidedown").click(() => {
+                $(".box").slideDown()
+            })
+            // slidetoggle
+            // 슬라이드해서 올라가고/내려오기
+            // $(".slidetoggle").click(() => {
+            //     $(".box").slideToggle()
+            // })
+            // slidetoggle
+            // 슬라이드해서 올라가고/내려오기 (각 요소에 숫자 표시)
+            $(".slidetoggle").click(() => {
+                $(".content div").each(function (index, item) {
+                    $(item).text(index)
+                })
+                $(".box:even").slideToggle()
+            })
+        
+    </script>
+</body>
+</html>
